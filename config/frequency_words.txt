@@ -195,6 +195,8 @@
 
 /\bOpenAI\b|\bChatGPT\b|\bSora\b|\bDALL-E\b|\bSam Altman\b|\bGreg Brockman\b/ => OpenAI
 /\bAnthropic\b|\bClaude\b|\bDario Amodei\b/ => Claude
+/\bMeta\b|\bFacebook\b|\bInstagram\b|\bWhatsApp\b|\bMark Zuckerberg\b|\bThreads\b|\bReality Labs\b/ => Meta
+/\bTesla\b|\bElon Musk\b|\bX platform\b|\bSpaceX\b|\bStarlink\b|\bNeuralink\b|\bxAI\b/ => 马斯克系
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -256,3 +258,257 @@
 
 # 产业政策
 生产力
+
+# ═══════════════════════════════════════════════════════════════
+#                         国际热点与地区
+# ═══════════════════════════════════════════════════════════════
+
+/\bRussia\b|\bRussian\b|\bMoscow\b|\bKremlin\b|\bPutin\b|\bUkraine\b|\bUkrainian\b|\bKyiv\b|\bKiev\b|\bZelensky\b|\bCrimea\b|\bDonbas\b|\bNATO\b|俄罗斯|俄国|俄方|莫斯科|克里姆林宫|普京|乌克兰|乌方|基辅|泽连斯基|克里米亚|顿巴斯|北约/ => 俄乌战争
+
+/\bGaza\b|\bHamas\b|\bIsrael\b|\bIsraeli\b|\bNetanyahu\b|\bPalestine\b|\bPalestinian\b|\bWest Bank\b|\bRafah\b|\bIDF\b|\bhostage\b|\bceasefire\b|加沙|哈马斯|以色列|以军|内塔尼亚胡|巴勒斯坦|约旦河西岸|拉法|人质|停火/ => 巴以冲突
+
+/\bIran\b|\bTehran\b|\bKhamenei\b|\bRevolutionary Guard\b|\bIRGC\b|\bnuclear talks\b|\bnuclear programme\b|\bnuclear program\b|\bsanctions\b|伊朗|德黑兰|哈梅内伊|革命卫队|伊核|核谈判|核计划|制裁/ => 伊朗问题
+
+/\bSyria\b|\bAssad\b|\bDamascus\b|\bAleppo\b|\bIdlib\b|叙利亚|阿萨德|大马士革|阿勒颇|伊德利卜/ => 叙利亚
+
+/\bLebanon\b|\bHezbollah\b|\bBeirut\b|黎巴嫩|真主党|贝鲁特/ => 黎巴嫩
+
+/\bYemen\b|\bHouthi\b|\bHouthis\b|\bRed Sea\b|\bSanaa\b|也门|胡塞|胡塞武装|红海|萨那/ => 也门/红海
+
+/\bSaudi Arabia\b|\bSaudi\b|\bRiyadh\b|\bMohammed bin Salman\b|\bMBS\b|沙特|沙特阿拉伯|利雅得|穆罕默德·本·萨勒曼|穆罕默德本萨勒曼/ => 沙特阿拉伯
+
+/\bTurkey\b|\bTurkish\b|\bErdogan\b|\bAnkara\b|\bIstanbul\b|土耳其|埃尔多安|安卡拉|伊斯坦布尔/ => 土耳其
+
+/\bChina\b|\bChinese\b|\bBeijing\b|\bXi Jinping\b|\bTaiwan\b|\bTaiwanese\b|\bTaipei\b|\bHong Kong\b|\bXinjiang\b|\bTibet\b|\bSouth China Sea\b|中国|中方|北京|习近平|台湾|台北|香港|新疆|西藏|南海/ => 中国相关
+
+/\bTaiwan\b|\bTaiwanese\b|\bTaipei\b|\bTSMC\b|\bLai Ching-te\b|\bKuomintang\b|\bKMT\b|\bDPP\b|台湾|台北|台积电|赖清德|国民党|民进党/ => 台湾
+
+/\bNorth Korea\b|\bKim Jong Un\b|\bPyongyang\b|\bmissile launch\b|\bballistic missile\b|朝鲜|北韩|金正恩|平壤|导弹发射|弹道导弹/ => 朝鲜
+
+/\bSouth Korea\b|\bKorea\b|\bSeoul\b|\bYoon Suk Yeol\b|\bK-pop\b|韩国|南韩|首尔|尹锡悦|韩流/ => 韩国
+
+/\bJapan\b|\bJapanese\b|\bTokyo\b|\bKishida\b|\bIshiba\b|\bYen\b|\bFukushima\b|日本|东京|岸田|石破|日元|福岛/ => 日本
+
+/\bIndia\b|\bIndian\b|\bNew Delhi\b|\bModi\b|\bBJP\b|\bCongress party\b|\bKashmir\b|印度|新德里|莫迪|印度人民党|国大党|克什米尔/ => 印度
+
+/\bPakistan\b|\bPakistani\b|\bIslamabad\b|\bImran Khan\b|\bKashmir\b|巴基斯坦|伊斯兰堡|伊姆兰·汗|伊姆兰汗|克什米尔/ => 巴基斯坦
+
+/\bAfghanistan\b|\bTaliban\b|\bKabul\b|阿富汗|塔利班|喀布尔/ => 阿富汗
+
+/\bMyanmar\b|\bBurma\b|\bRohingya\b|\bjunta\b|\bAung San Suu Kyi\b|缅甸|罗兴亚|军政府|昂山素季/ => 缅甸
+
+/\bThailand\b|\bThai\b|\bBangkok\b|泰国|曼谷/ => 泰国
+
+/\bPhilippines\b|\bPhilippine\b|\bManila\b|\bMarcos\b|\bDuterte\b|\bSouth China Sea\b|菲律宾|马尼拉|马科斯|杜特尔特|南海/ => 菲律宾
+
+/\bIndonesia\b|\bIndonesian\b|\bJakarta\b|\bPrabowo\b|印尼|印度尼西亚|雅加达|普拉博沃/ => 印尼
+
+/\bVietnam\b|\bVietnamese\b|\bHanoi\b|越南|河内/ => 越南
+
+/\bAustralia\b|\bAustralian\b|\bCanberra\b|\bSydney\b|\bMelbourne\b|\bAlbanese\b|澳大利亚|澳洲|堪培拉|悉尼|墨尔本|阿尔巴尼斯/ => 澳大利亚
+
+/\bNew Zealand\b|\bJacinda Ardern\b|\bWellington\b|\bAuckland\b|新西兰|惠灵顿|奥克兰|阿德恩/ => 新西兰
+
+/\bFrance\b|\bFrench\b|\bParis\b|\bMacron\b|\bLe Pen\b|\bNational Rally\b|法国|巴黎|马克龙|勒庞|国民联盟/ => 法国
+
+/\bGermany\b|\bGerman\b|\bBerlin\b|\bScholz\b|\bMerz\b|\bAfD\b|\bBundestag\b|德国|柏林|朔尔茨|默茨|德国选择党|联邦议院/ => 德国
+
+/\bItaly\b|\bItalian\b|\bRome\b|\bMeloni\b|意大利|罗马|梅洛尼/ => 意大利
+
+/\bSpain\b|\bSpanish\b|\bMadrid\b|\bSánchez\b|\bCatalonia\b|西班牙|马德里|桑切斯|加泰罗尼亚/ => 西班牙
+
+/\bNetherlands\b|\bDutch\b|\bAmsterdam\b|\bWilders\b|荷兰|阿姆斯特丹|维尔德斯/ => 荷兰
+
+/\bPoland\b|\bPolish\b|\bWarsaw\b|\bTusk\b|\bDuda\b|波兰|华沙|图斯克|杜达/ => 波兰
+
+/\bHungary\b|\bHungarian\b|\bBudapest\b|\bOrban\b|匈牙利|布达佩斯|欧尔班|奥尔班/ => 匈牙利
+
+/\bEuropean Union\b|\bEU\b|\bBrussels\b|\bEuropean Commission\b|\bvon der Leyen\b|\bEuropean Parliament\b|欧盟|欧洲联盟|布鲁塞尔|欧盟委员会|冯德莱恩|欧洲议会/ => 欧盟
+
+/\bAfrica\b|\bAfrican Union\b|\bSahel\b|\bSudan\b|\bEthiopia\b|\bSomalia\b|\bKenya\b|\bNigeria\b|\bSouth Africa\b|非洲|非盟|非洲联盟|萨赫勒|苏丹|埃塞俄比亚|索马里|肯尼亚|尼日利亚|南非/ => 非洲
+
+/\bSudan\b|\bDarfur\b|\bKhartoum\b|\bRSF\b|\bRapid Support Forces\b|苏丹|达尔富尔|喀土穆|快速支援部队/ => 苏丹
+
+/\bHaiti\b|\bPort-au-Prince\b|\bgang violence\b|海地|太子港|帮派暴力/ => 海地
+
+/\bMexico\b|\bMexican\b|\bMexico City\b|\bSheinbaum\b|\bcartel\b|墨西哥|墨西哥城|辛鲍姆|贩毒集团|毒品集团/ => 墨西哥
+
+/\bBrazil\b|\bBrazilian\b|\bBrasilia\b|\bLula\b|\bBolsonaro\b|\bAmazon rainforest\b|巴西|巴西利亚|卢拉|博索纳罗|亚马孙雨林|亚马逊雨林/ => 巴西
+
+/\bArgentina\b|\bArgentine\b|\bBuenos Aires\b|\bMilei\b|阿根廷|布宜诺斯艾利斯|米莱/ => 阿根廷
+
+/\bCanada\b|\bCanadian\b|\bOttawa\b|\bToronto\b|\bTrudeau\b|\bCarney\b|加拿大|渥太华|多伦多|特鲁多|卡尼/ => 加拿大
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         美国政治与社会
+# ═══════════════════════════════════════════════════════════════
+
+/\bDonald Trump\b|\bTrump\b|\bMAGA\b|\bMar-a-Lago\b|\bTruth Social\b|特朗普|川普|海湖庄园/ => 特朗普
+
+/\bJoe Biden\b|\bBiden\b|\bKamala Harris\b|\bHarris\b|拜登|乔·拜登|乔拜登|卡玛拉·哈里斯|哈里斯/ => 拜登/哈里斯
+
+/\bWhite House\b|\bOval Office\b|\bpresident\b|\bpresidential\b|\badministration\b|白宫|椭圆形办公室|总统|总统府|政府|本届政府/ => 白宫/总统
+
+/\bCongress\b|\bSenate\b|\bHouse of Representatives\b|\bCapitol Hill\b|\bSpeaker of the House\b|美国国会|国会|参议院|众议院|国会山|众议院议长/ => 美国国会
+
+/\bSupreme Court\b|\bSCOTUS\b|\bjustice\b|\bconstitutional\b|\bruling\b|美国最高法院|最高法院|大法官|宪法|裁决|判决/ => 美国最高法院
+
+/\bRepublican\b|\bRepublicans\b|\bGOP\b|\bconservative\b|\bright-wing\b|共和党|共和党人|保守派|右翼|美国右翼/ => 美国共和党
+
+/\bDemocrat\b|\bDemocrats\b|\bDemocratic Party\b|\bliberal\b|\bprogressive\b|民主党|民主党人|自由派|进步派/ => 美国民主党
+
+/\belection\b|\bcampaign\b|\bprimary\b|\bballot\b|\bpolling\b|\bvoter\b|\bvote count\b|\bswing state\b|\belectoral college\b|美国大选|选举|竞选|初选|选票|民调|选民|计票|摇摆州|选举人团/ => 美国选举
+
+/\bimmigration\b|\bmigrant\b|\bborder\b|\basylum\b|\bdeportation\b|\bICE\b|\bMexico border\b|移民|非法移民|移民危机|边境|美墨边境|庇护|遣返|驱逐|美国移民与海关执法局/ => 美国移民问题
+
+/\bgun violence\b|\bmass shooting\b|\bschool shooting\b|\bNRA\b|\bSecond Amendment\b|枪支暴力|大规模枪击|校园枪击|枪击案|美国步枪协会|第二修正案/ => 美国枪支暴力
+
+/\babortion\b|\bRoe v Wade\b|\breproductive rights\b|\bPlanned Parenthood\b|堕胎|堕胎权|罗诉韦德案|生育权|计划生育联合会/ => 美国堕胎权
+
+/\bcivil rights\b|\bracial justice\b|\bBlack Lives Matter\b|\bBLM\b|\bpolice brutality\b|民权|种族正义|黑人的命也是命|警察暴力|警暴|种族歧视/ => 美国民权/种族
+
+/\bstudent debt\b|\bstudent loan\b|\bcampus protest\b|\bIvy League\b|\bHarvard\b|\bColumbia University\b|学生债务|学生贷款|校园抗议|常春藤|哈佛|哥伦比亚大学/ => 美国高校与学生
+
+/\bFBI\b|\bCIA\b|\bNSA\b|\bPentagon\b|\bDepartment of Justice\b|\bDOJ\b|\bHomeland Security\b|联邦调查局|中央情报局|国家安全局|五角大楼|司法部|国土安全部/ => 美国联邦机构
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         英国政治与社会
+# ═══════════════════════════════════════════════════════════════
+
+/\bUK\b|\bBritain\b|\bBritish\b|\bLondon\b|\bWestminster\b|\bDowning Street\b|\bNo 10\b|英国|英方|不列颠|伦敦|威斯敏斯特|唐宁街|唐宁街10号/ => 英国
+
+/\bKeir Starmer\b|\bStarmer\b|\bLabour Party\b|\bLabour government\b|斯塔默|基尔·斯塔默|工党|英国工党|工党政府/ => 英国工党
+
+/\bRishi Sunak\b|\bConservative Party\b|\bTories\b|\bTory\b|\bBoris Johnson\b|\bLiz Truss\b|苏纳克|保守党|英国保守党|托利党|鲍里斯·约翰逊|约翰逊|特拉斯/ => 英国保守党
+
+/\bNigel Farage\b|\bReform UK\b|\bBrexit\b|\bLeave campaign\b|法拉奇|英国改革党|脱欧|英国脱欧|退欧|脱欧派/ => 英国右翼/脱欧
+
+/\bNHS\b|\bNational Health Service\b|\bjunior doctors\b|\bGPs\b|\bhospital waiting list\b|英国国民医疗服务体系|英国医疗系统|初级医生|全科医生|医院候诊名单|候诊名单/ => 英国医疗/NHS
+
+/\broyal family\b|\bKing Charles\b|\bPrince William\b|\bKate Middleton\b|\bMeghan Markle\b|\bPrince Harry\b|\bBuckingham Palace\b|英国王室|王室|查尔斯国王|威廉王子|凯特王妃|梅根|哈里王子|白金汉宫/ => 英国王室
+
+/\bScotland\b|\bScottish\b|\bSNP\b|\bEdinburgh\b|\bGlasgow\b|苏格兰|苏格兰民族党|爱丁堡|格拉斯哥/ => 苏格兰
+
+/\bNorthern Ireland\b|\bBelfast\b|\bDUP\b|\bSinn Féin\b|\bGood Friday Agreement\b|北爱尔兰|贝尔法斯特|民主统一党|新芬党|耶稣受难日协议|贝尔法斯特协议/ => 北爱尔兰
+
+/\bWales\b|\bWelsh\b|\bCardiff\b|威尔士|卡迪夫/ => 威尔士
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         战争、安全与外交
+# ═══════════════════════════════════════════════════════════════
+
+/\bwar\b|\binvasion\b|\bairstrike\b|\bmissile strike\b|\bdrone attack\b|\bshelling\b|\bbattlefield\b|\bfrontline\b|战争|入侵|空袭|导弹袭击|无人机袭击|炮击|战场|前线/ => 战争冲突
+
+/\bceasefire\b|\bpeace talks\b|\btruce\b|\bhostage deal\b|\bprisoner swap\b|\bnegotiation\b|停火|和平谈判|和谈|休战|人质协议|换囚|谈判/ => 停火/和谈
+
+/\brefugee\b|\brefugees\b|\bdisplaced people\b|\bhumanitarian crisis\b|\baid convoy\b|\bUNRWA\b|\bRed Cross\b|难民|流离失所者|人道危机|援助车队|联合国近东救济工程处|红十字会/ => 难民与人道危机
+
+/\bterrorism\b|\bterror attack\b|\bextremist\b|\bISIS\b|\bIslamic State\b|\bal-Qaeda\b|\bjihadist\b|恐怖主义|恐袭|恐怖袭击|极端分子|伊斯兰国|基地组织|圣战分子/ => 恐怖主义
+
+/\bcoup\b|\bmilitary junta\b|\bmartial law\b|\barmy takeover\b|政变|军事政变|军政府|戒严|军方接管/ => 政变/军政府
+
+/\bsanctions\b|\bembargo\b|\basset freeze\b|\bblacklist\b|\btrade restrictions\b|制裁|禁运|资产冻结|黑名单|贸易限制/ => 制裁
+
+/\bNATO\b|\bG7\b|\bG20\b|\bUnited Nations\b|\bUN Security Council\b|\bsummit\b|\bdiplomatic talks\b|北约|七国集团|二十国集团|联合国|安理会|联合国安理会|峰会|外交会谈/ => 国际组织/峰会
+
+/\bnuclear weapon\b|\bnuclear test\b|\buramium enrichment\b|\barms control\b|\bnon-proliferation\b|\buramium\b|\buranium enrichment\b|核武器|核试验|铀浓缩|军控|不扩散|核不扩散/ => 核武器/核问题
+
+/\bcyberattack\b|\bhackers\b|\bransomware\b|\bdata breach\b|\bespionage\b|\bspyware\b|网络攻击|黑客|勒索软件|数据泄露|间谍活动|间谍软件/ => 网络安全
+
+/\bintelligence leak\b|\bclassified documents\b|\bwhistleblower\b|\bsurveillance\b|情报泄露|机密文件|告密者|吹哨人|监控|监听/ => 情报泄露/监控
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         经济、市场与金融
+# ═══════════════════════════════════════════════════════════════
+
+/\bFederal Reserve\b|\bFed\b|\bJerome Powell\b|\binterest rates\b|\brate cut\b|\brate hike\b|\binflation\b|\bCPI\b|美联储|鲍威尔|杰罗姆·鲍威尔|利率|降息|加息|通胀|通货膨胀|消费者价格指数/ => 美联储/通胀
+
+/\bBank of England\b|\bBoE\b|\bEuropean Central Bank\b|\bECB\b|\bcentral bank\b|\bmonetary policy\b|英格兰银行|英国央行|欧洲央行|央行|中央银行|货币政策/ => 央行政策
+
+/\bstock market\b|\bWall Street\b|\bDow Jones\b|\bS&P 500\b|\bNasdaq\b|\bshares\b|\bequities\b|股市|股票市场|华尔街|道琼斯|标普500|纳斯达克|股票|美股/ => 美股市场
+
+/\bbond market\b|\bTreasury yields\b|\bgovernment bonds\b|\bgilts\b|\bdebt market\b|债券市场|美国国债收益率|国债收益率|政府债券|英国国债|债务市场/ => 债券市场
+
+/\boil prices\b|\bBrent crude\b|\bWTI\b|\bOPEC\b|\bSaudi oil\b|\benergy prices\b|油价|原油价格|布伦特原油|西德州中质原油|欧佩克|沙特石油|能源价格/ => 石油价格
+
+/\bgas prices\b|\bnatural gas\b|\bLNG\b|\benergy crisis\b|\belectricity bills\b|天然气价格|天然气|液化天然气|能源危机|电费|电价/ => 能源价格
+
+/\brecession\b|\beconomic slowdown\b|\bGDP growth\b|\bsoft landing\b|\bstagflation\b|经济衰退|经济放缓|GDP增长|国内生产总值增长|软着陆|滞胀/ => 经济衰退
+
+/\btrade war\b|\btariff\b|\bexports\b|\bimports\b|\bsupply chain\b|\bcustoms duties\b|贸易战|关税|出口|进口|供应链|海关税|贸易限制/ => 贸易战/关税
+
+/\bWorld Bank\b|\bIMF\b|\bInternational Monetary Fund\b|\bdebt crisis\b|\bsovereign debt\b|世界银行|国际货币基金组织|债务危机|主权债务/ => IMF/债务危机
+
+/\bcrypto\b|\bcryptocurrency\b|\bBitcoin\b|\bEthereum\b|\bstablecoin\b|\bBinance\b|\bCoinbase\b|\bFTX\b|加密货币|虚拟货币|比特币|以太坊|稳定币|币安/ => 加密货币
+
+/\bbanking crisis\b|\bbank collapse\b|\bSilicon Valley Bank\b|\bCredit Suisse\b|\bregional banks\b|银行危机|银行倒闭|硅谷银行|瑞士信贷|地区性银行|区域银行/ => 银行业危机
+
+/\bhousing market\b|\bmortgage rates\b|\brent prices\b|\bhome prices\b|\bproperty market\b|房地产市场|房贷利率|抵押贷款利率|租金|房价|楼市/ => 房地产市场
+
+/\bcost of living\b|\bfood prices\b|\bliving costs\b|\bhousehold bills\b|\bwage growth\b|生活成本|食品价格|物价|家庭账单|工资增长|薪资增长/ => 生活成本
+
+/\bunemployment\b|\bjobs report\b|\blayoffs\b|\bstrike\b|\bminimum wage\b|\bworkers' rights\b|失业|失业率|就业报告|裁员|罢工|最低工资|劳工权利|工人权利/ => 就业与劳工
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         气候、环境与灾害
+# ═══════════════════════════════════════════════════════════════
+
+/\bclimate change\b|\bclimate crisis\b|\bglobal warming\b|\bgreenhouse gas\b|\bcarbon emissions\b|\bnet zero\b|气候变化|气候危机|全球变暖|温室气体|碳排放|净零|碳中和/ => 气候变化
+
+/\bheatwave\b|\bextreme heat\b|\brecord temperatures\b|\bheat warning\b|\bheat deaths\b|热浪|极端高温|创纪录高温|高温预警|高温死亡/ => 极端高温
+
+/\bwildfire\b|\bforest fire\b|\bbushfire\b|\bsmoke pollution\b|\bevacuation order\b|山火|野火|森林火灾|林火|烟雾污染|疏散令/ => 山火
+
+/\bflood\b|\bflooding\b|\bflash flood\b|\bheavy rain\b|\bmonsoon\b|\blandslide\b|\bmudslide\b|洪水|洪灾|洪涝|山洪|暴雨|季风|滑坡|泥石流/ => 洪水/滑坡
+
+/\bhurricane\b|\btyphoon\b|\bcyclone\b|\bstorm surge\b|\btropical storm\b|飓风|台风|气旋|风暴潮|热带风暴/ => 飓风/台风
+
+/\bearthquake\b|\baftershock\b|\btsunami\b|\bseismic\b|\bvolcano\b|\beruption\b|地震|余震|海啸|地震活动|火山|火山喷发/ => 地震/火山
+
+/\bdrought\b|\bwater shortage\b|\breservoir\b|\bcrop failure\b|\bfood security\b|干旱|缺水|水资源短缺|水库|作物歉收|粮食安全/ => 干旱/粮食安全
+
+/\bair pollution\b|\bPM2.5\b|\bsmog\b|\btoxic air\b|\bpoor air quality\b|空气污染|大气污染|雾霾|有毒空气|空气质量差|PM2.5/ => 空气污染
+
+/\bplastic pollution\b|\bmicroplastics\b|\bocean pollution\b|\bmarine life\b|塑料污染|微塑料|海洋污染|海洋生物/ => 塑料污染
+
+/\bbiodiversity\b|\bextinction\b|\bendangered species\b|\bconservation\b|\bwildlife\b|生物多样性|灭绝|濒危物种|保护|野生动物/ => 生物多样性
+
+/\brenewable energy\b|\bsolar power\b|\bwind power\b|\bgreen energy\b|\bclean energy\b|可再生能源|太阳能|风能|绿色能源|清洁能源/ => 可再生能源
+
+/\bfossil fuels\b|\bcoal power\b|\boil drilling\b|\bgas drilling\b|\bfracking\b|化石燃料|化石能源|煤电|石油钻探|天然气钻探|水力压裂/ => 化石能源
+
+/\bCOP\d+\b|\bclimate summit\b|\bParis Agreement\b|\bUN climate talks\b|气候大会|联合国气候大会|巴黎协定|联合国气候谈判/ => 气候大会
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         健康、医学与公共卫生
+# ═══════════════════════════════════════════════════════════════
+
+/\bCovid\b|\bCOVID-19\b|\bcoronavirus\b|\bpandemic\b|\bvaccine\b|\bbooster shot\b|新冠|新冠病毒|冠状病毒|疫情|大流行|疫苗|加强针/ => 新冠/疫苗
+
+/\bbird flu\b|\bavian flu\b|\bH5N1\b|\bswine flu\b|\bflu outbreak\b|\binfluenza\b|禽流感|鸟流感|H5N1|猪流感|流感暴发|流感/ => 流感/禽流感
+
+/\bmpox\b|\bmonkeypox\b|\bEbola\b|\bZika\b|\bdengue\b|\bmalaria\b|\bcholera\b|猴痘|埃博拉|寨卡|登革热|疟疾|霍乱/ => 传染病
+
+/\bWHO\b|\bWorld Health Organization\b|\bCDC\b|\bpublic health emergency\b|世界卫生组织|世卫组织|美国疾控中心|疾控中心|公共卫生紧急事件/ => 公共卫生机构
+
+/\bcancer\b|\btumour\b|\btumor\b|\bchemotherapy\b|\bimmunotherapy\b|\boncology\b|癌症|肿瘤|化疗|免疫疗法|免疫治疗|肿瘤学/ => 癌症
+
+/\bAlzheimer\b|\bdementia\b|\bParkinson\b|\bbrain disease\b|\bneurological\b|阿尔茨海默病|老年痴呆|痴呆症|帕金森|脑部疾病|神经系统疾病/ => 神经退行性疾病
+
+/\bheart disease\b|\bcardiac\b|\bstroke\b|\bblood pressure\b|\bdiabetes\b|\bobesity\b|心脏病|心血管|中风|脑卒中|血压|糖尿病|肥胖/ => 慢病
+
+/\bmental health\b|\bdepression\b|\banxiety\b|\bsuicide prevention\b|\bloneliness\b|心理健康|精神健康|抑郁|焦虑|自杀预防|孤独/ => 心理健康
+
+/\bdrug overdose\b|\bopioid\b|\bfentanyl\b|\baddiction\b|\bsubstance abuse\b|药物过量|阿片类药物|芬太尼|成瘾|药物滥用|物质滥用/ => 毒品与成瘾
+
+/\babortion pill\b|\breproductive health\b|\bIVF\b|\bfertility treatment\b|堕胎药|生殖健康|试管婴儿|辅助生殖|生育治疗/ => 生育健康
+
+/\bhealthcare\b|\bhospital\b|\bdoctor strike\b|\bnurse strike\b|\bmedical workers\b|医疗|医疗保健|医院|医生罢工|护士罢工|医护人员/ => 医疗系统
+
+/\bfood poisoning\b|\bsalmonella\b|\bE. coli\b|\blisteria\b|\bproduct recall\b|食物中毒|沙门氏菌|大肠杆菌|李斯特菌|产品召回|食品召回/ => 食品安全

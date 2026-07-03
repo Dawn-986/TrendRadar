@@ -505,7 +505,6 @@ advanced:
   # 热榜爬虫技术参数
   crawler:
     request_interval: 2000            # 请求间隔（毫秒）
-    # use_proxy: false                  # 是否启用代理（true=启用, false=不使用）
     use_proxy: false                  # 是否启用代理（true=启用, false=不使用）
     default_proxy: "http://127.0.0.1:1080"
 
@@ -513,8 +512,7 @@ advanced:
   rss:
     request_interval: 1000            # 请求间隔（毫秒）
     timeout: 15                       # 请求超时（秒）
-    # use_proxy: false                  # Ubuntu不使用代理
-    use_proxy: true                  # 笔记本使用代理
+    use_proxy: false                  # Ubuntu不使用代理
     # proxy_url: ""                     # RSS 专属代理（留空则使用 crawler.default_proxy）
 
   # 排序权重（用于重新排序不同平台的热搜）

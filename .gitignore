@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 
 output/
+index.html
 
 run-local-ai.ps1
 *.local.ps1

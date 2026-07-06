@@ -75,9 +75,10 @@ platforms:
     - id: "cls-hot"
       name: "财联社热门"
       expected_domain: "cls.cn"
-    - id: "ifeng"
-      name: "凤凰网"
-      expected_domain: "ifeng.com"
+    # 凤凰网标题党
+    # - id: "ifeng"
+    #   name: "凤凰网"
+    #   expected_domain: "ifeng.com"
     # - id: "zaobao"
     #   name: "联合早报"
     #   expected_domain: "zaobao.com"

@@ -8,6 +8,7 @@ SQLite 存储 Mixin
 import sqlite3
 from abc import abstractmethod
 from datetime import datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -53,6 +54,202 @@ class SQLiteStorageMixin:
     # ========================================
     # Schema 管理
     # ========================================
+
+    def _get_summary_db_path(self) -> Path:
+        """Return the summary database path for local or remote-backed storage."""
+        if hasattr(self, "data_dir"):
+            base_dir = Path(getattr(self, "data_dir"))
+        elif hasattr(self, "temp_dir"):
+            base_dir = Path(getattr(self, "temp_dir"))
+        else:
+            base_dir = Path("output")
+        base_dir.mkdir(parents=True, exist_ok=True)
+        return base_dir / "summary.db"
+
+    def _get_summary_connection(self) -> sqlite3.Connection:
+        """Get a SQLite connection to summary.db."""
+        db_path = str(self._get_summary_db_path())
+        connections = getattr(self, "_db_connections", None)
+
+        if connections is not None and db_path in connections:
+            return connections[db_path]
+
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        self._init_summary_tables(conn)
+
+        if connections is not None:
+            connections[db_path] = conn
+
+        return conn
+
+    def _init_summary_tables(self, conn: sqlite3.Connection) -> None:
+        """Create the normalized long-term summary tables."""
+        conn.executescript("""
+            CREATE TABLE IF NOT EXISTS sources (
+                id TEXT PRIMARY KEY,
+                name TEXT NOT NULL,
+                isactive INTEGER NOT NULL DEFAULT 1
+            );
+
+            CREATE TABLE IF NOT EXISTS news_items (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                source_id TEXT NOT NULL,
+                url TEXT DEFAULT '',
+                published_time TEXT NOT NULL,
+                summary TEXT,
+                FOREIGN KEY (source_id) REFERENCES sources(id)
+            );
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_summary_news_source_url
+            ON news_items(source_id, url)
+            WHERE url != '';
+
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_summary_news_no_url
+            ON news_items(source_id, title, published_time)
+            WHERE url = '';
+        """)
+        conn.commit()
+
+    def _format_summary_time(self, date: str, value: str) -> str:
+        """Normalize crawl/publish time to YYYY-MM-DD HH:MM:SS."""
+        value = (value or "").strip()
+        if not value:
+            return f"{date} 00:00:00"
+        if len(value) == 5 and value[2] == "-":
+            return f"{date} {value.replace('-', ':')}:00"
+        if len(value) == 5 and value[2] == ":":
+            return f"{date} {value}:00"
+
+        normalized = value.replace("Z", "+00:00")
+        try:
+            parsed = datetime.fromisoformat(normalized)
+            return parsed.strftime("%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            pass
+
+        try:
+            parsed = parsedate_to_datetime(value)
+            return parsed.strftime("%Y-%m-%d %H:%M:%S")
+        except (TypeError, ValueError, IndexError, OverflowError):
+            pass
+
+        try:
+            parsed = datetime.strptime(value, "%Y-%m-%d %H:%M")
+            return parsed.strftime("%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            return value
+
+    def _record_summary_change(self, conn: sqlite3.Connection, before: int, row_id: int) -> tuple[int, int]:
+        """Return inserted/updated counters for the most recent upsert."""
+        if conn.total_changes <= before:
+            return 0, 0
+        return (1, 0) if row_id else (0, 1)
+
+    def _save_news_summary_impl(self, data: NewsData, log_prefix: str = "[存储]") -> tuple[bool, int, int]:
+        """Merge hotlist items into summary.db."""
+        try:
+            conn = self._get_summary_connection()
+            cursor = conn.cursor()
+            inserted_count = 0
+            updated_count = 0
+
+            for source_id, source_name in data.id_to_name.items():
+                cursor.execute("""
+                    INSERT INTO sources (id, name, isactive)
+                    VALUES (?, ?, 1)
+                    ON CONFLICT(id) DO UPDATE SET
+                        name = excluded.name,
+                        isactive = 1
+                """, (source_id, source_name or source_id))
+
+            for source_id, news_list in data.items.items():
+                source_name = data.id_to_name.get(source_id, source_id)
+                cursor.execute("""
+                    INSERT INTO sources (id, name, isactive)
+                    VALUES (?, ?, 1)
+                    ON CONFLICT(id) DO UPDATE SET
+                        name = excluded.name,
+                        isactive = 1
+                """, (source_id, source_name or source_id))
+
+                for item in news_list:
+                    published_time = self._format_summary_time(
+                        data.date, item.first_time or item.crawl_time or data.crawl_time
+                    )
+                    before = conn.total_changes
+                    cursor.execute("""
+                        INSERT INTO news_items
+                            (title, source_id, url, published_time, summary)
+                        VALUES (?, ?, ?, ?, '')
+                        ON CONFLICT(source_id, url) WHERE url != '' DO UPDATE SET
+                            title = excluded.title,
+                            published_time = excluded.published_time
+                        ON CONFLICT(source_id, title, published_time) WHERE url = '' DO NOTHING
+                    """, (item.title, source_id, item.url or "", published_time))
+                    inserted, updated = self._record_summary_change(conn, before, cursor.lastrowid)
+                    inserted_count += inserted
+                    updated_count += updated
+
+            conn.commit()
+            return True, inserted_count, updated_count
+        except Exception as e:
+            print(f"{log_prefix} 保存 summary.db 热榜数据失败: {e}")
+            return False, 0, 0
+
+    def _save_rss_summary_impl(self, data: RSSData, log_prefix: str = "[存储]") -> tuple[bool, int, int]:
+        """Merge RSS items into summary.db."""
+        try:
+            conn = self._get_summary_connection()
+            cursor = conn.cursor()
+            inserted_count = 0
+            updated_count = 0
+
+            for feed_id, feed_name in data.id_to_name.items():
+                cursor.execute("""
+                    INSERT INTO sources (id, name, isactive)
+                    VALUES (?, ?, 1)
+                    ON CONFLICT(id) DO UPDATE SET
+                        name = excluded.name,
+                        isactive = 1
+                """, (feed_id, feed_name or feed_id))
+
+            for feed_id, rss_list in data.items.items():
+                feed_name = data.id_to_name.get(feed_id, feed_id)
+                cursor.execute("""
+                    INSERT INTO sources (id, name, isactive)
+                    VALUES (?, ?, 1)
+                    ON CONFLICT(id) DO UPDATE SET
+                        name = excluded.name,
+                        isactive = 1
+                """, (feed_id, feed_name or feed_id))
+
+                for item in rss_list:
+                    published_time = self._format_summary_time(
+                        data.date, item.published_at or item.first_time or item.crawl_time or data.crawl_time
+                    )
+                    before = conn.total_changes
+                    cursor.execute("""
+                        INSERT INTO news_items
+                            (title, source_id, url, published_time, summary)
+                        VALUES (?, ?, ?, ?, ?)
+                        ON CONFLICT(source_id, url) WHERE url != '' DO UPDATE SET
+                            title = excluded.title,
+                            published_time = excluded.published_time,
+                            summary = excluded.summary
+                        ON CONFLICT(source_id, title, published_time) WHERE url = '' DO UPDATE SET
+                            summary = excluded.summary
+                    """, (item.title, feed_id, item.url or "", published_time, item.summary or ""))
+                    inserted, updated = self._record_summary_change(conn, before, cursor.lastrowid)
+                    inserted_count += inserted
+                    updated_count += updated
+
+            conn.commit()
+            return True, inserted_count, updated_count
+        except Exception as e:
+            print(f"{log_prefix} 保存 summary.db RSS 数据失败: {e}")
+            return False, 0, 0
 
     def _get_schema_path(self, db_type: str = "news") -> Path:
         """

@@ -160,6 +160,8 @@ class RemoteStorageBackend(SQLiteStorageMixin, StorageBackend):
         Returns:
             远程对象键，如 "news/2025-12-28.db" 或 "rss/2025-12-28.db"
         """
+        if db_type == "summary":
+            return "summary.db"
         date_folder = self._format_date_folder(date)
         return f"{db_type}/{date_folder}.db"
 
@@ -174,6 +176,9 @@ class RemoteStorageBackend(SQLiteStorageMixin, StorageBackend):
         Returns:
             本地临时文件路径
         """
+        if db_type == "summary":
+            self.temp_dir.mkdir(parents=True, exist_ok=True)
+            return self.temp_dir / "summary.db"
         date_folder = self._format_date_folder(date)
         db_dir = self.temp_dir / db_type
         db_dir.mkdir(parents=True, exist_ok=True)
@@ -375,6 +380,18 @@ class RemoteStorageBackend(SQLiteStorageMixin, StorageBackend):
         if not success:
             return False
 
+        if not self._get_local_db_path(db_type="summary").exists():
+            self._download_sqlite(db_type="summary")
+        summary_success, summary_new, summary_updated = self._save_news_summary_impl(
+            data, "[远程存储]"
+        )
+        if not summary_success:
+            return False
+        print(f"[远程存储] summary.db 热榜同步完成：新增/更新 {summary_new + summary_updated} 条")
+        if not self._upload_sqlite(db_type="summary"):
+            print("[远程存储] summary.db 上传远程存储失败")
+            return False
+
         # 查询合并后的总记录数
         cursor.execute("SELECT COUNT(*) as count FROM news_items")
         row = cursor.fetchone()
@@ -456,6 +473,17 @@ class RemoteStorageBackend(SQLiteStorageMixin, StorageBackend):
         if not success:
             return False
 
+        if not self._get_local_db_path(db_type="summary").exists():
+            self._download_sqlite(db_type="summary")
+        summary_success, summary_new, summary_updated = self._save_rss_summary_impl(
+            data, "[远程存储]"
+        )
+        if not summary_success:
+            return False
+        print(f"[远程存储] summary.db RSS 同步完成：新增/更新 {summary_new + summary_updated} 条")
+        if not self._upload_sqlite(db_type="summary"):
+            print("[远程存储] summary.db 上传远程存储失败")
+            return False
         # 输出统计日志
         log_parts = [f"[远程存储] RSS 处理完成：新增 {new_count} 条"]
         if updated_count > 0:

@@ -135,6 +135,13 @@ class LocalStorageBackend(SQLiteStorageMixin, StorageBackend):
             self._save_news_data_impl(data, "[本地存储]")
 
         if success:
+            summary_success, summary_new, summary_updated = self._save_news_summary_impl(
+                data, "[本地存储]"
+            )
+            if summary_success:
+                print(f"[本地存储] summary.db 热榜同步完成：新增/更新 {summary_new + summary_updated} 条")
+            else:
+                return False
             # 输出详细的存储统计日志
             log_parts = [f"[本地存储] 处理完成：新增 {new_count} 条"]
             if updated_count > 0:
@@ -209,6 +216,15 @@ class LocalStorageBackend(SQLiteStorageMixin, StorageBackend):
             if updated_count > 0:
                 log_parts.append(f"更新 {updated_count} 条")
             print("，".join(log_parts))
+
+        if success:
+            summary_success, summary_new, summary_updated = self._save_rss_summary_impl(
+                data, "[本地存储]"
+            )
+            if summary_success:
+                print(f"[本地存储] summary.db RSS 同步完成：新增/更新 {summary_new + summary_updated} 条")
+            else:
+                return False
 
         return success
 

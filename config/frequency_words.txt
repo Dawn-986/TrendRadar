@@ -348,8 +348,6 @@
 
 /\bJoe Biden\b|\bBiden\b|\bKamala Harris\b|\bHarris\b|拜登|乔·拜登|乔拜登|卡玛拉·哈里斯|哈里斯/ => 拜登/哈里斯
 
-/\bWhite House\b|\bOval Office\b|\bpresident\b|\bpresidential\b|\badministration\b|白宫|椭圆形办公室|总统|总统府|政府|本届政府/ => 白宫/总统
-
 /\bCongress\b|\bSenate\b|\bHouse of Representatives\b|\bCapitol Hill\b|\bSpeaker of the House\b|美国国会|国会|参议院|众议院|国会山|众议院议长/ => 美国国会
 
 /\bSupreme Court\b|\bSCOTUS\b|\bjustice\b|\bconstitutional\b|\bruling\b|美国最高法院|最高法院|大法官|宪法|裁决|判决/ => 美国最高法院

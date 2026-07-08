@@ -81,9 +81,9 @@ platforms:
     # - id: "zaobao"
     #   name: "联合早报"
     #   expected_domain: "zaobao.com"
-    - id: "36kr-renqi"
-      name: "36氪"
-      expected_domain: "36kr.com"
+    # - id: "36kr-renqi"
+    #   name: "36氪"
+    #   expected_domain: "36kr.com"
 
 
 # ===============================================================
